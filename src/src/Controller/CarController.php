@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Car;
+use App\Domain\Entity\Car;
 use App\Form\CarForm;
-use App\Application\UseCase\CreateCarUseCaseInterface;
+use App\Application\UseCase\Car\CreateCar\CreateCarUseCaseInterface;
 use App\Repository\CarRepository as RepositoryCarRepository;
 use App\DTO\CarDTO;
 use Doctrine\ORM\EntityManagerInterface;

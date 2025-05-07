@@ -7,8 +7,14 @@ services:
     App\Mapper\CarMapper:
         autowire: true
 
-    App\Application\UseCase\CreateCarUseCaseInterface:
-        alias: App\Application\UseCase\CreateCarUseCase
+    App\Domain\Repository\CarRepositoryInterface:
+        alias: App\Infrastructure\Repository\CarRepository
+
+    App\Application\UseCase\Car\CreateCar\CreateCarUseCaseInterface:
+        alias: App\Application\UseCase\Car\CreateCar\CreateCarUseCase
+
+    App\Application\UseCase\Car\DeleteCar\DeleteCarUseCaseInterface:
+        alias: App\Application\UseCase\Car\DeleteCar\DeleteCarUseCase
 
     App\:
         resource: '../src/'

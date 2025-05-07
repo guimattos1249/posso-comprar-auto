@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\UseCase;
+namespace App\Application\UseCase\Car\CreateCar;
 
 use App\DTO\CarDTO;
 

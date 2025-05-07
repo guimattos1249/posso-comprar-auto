@@ -3,7 +3,7 @@
 namespace App\Mapper;
 
 use App\DTO\CarDTO;
-use App\Entity\Car;
+use App\Domain\Entity\Car;
 
 class CarMapper
 {
