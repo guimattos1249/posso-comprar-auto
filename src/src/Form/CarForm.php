@@ -2,11 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\Car;
-use Doctrine\ORM\Query\Expr\Select;
-use Dom\Text;
+use App\DTO\CarDTO;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -46,7 +43,7 @@ class CarForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Car::class,
+            'data_class' => CarDTO::class,
         ]);
     }
 }

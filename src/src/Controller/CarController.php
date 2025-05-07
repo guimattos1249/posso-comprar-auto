@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Car;
+use App\Domain\Entity\Car;
 use App\Form\CarForm;
-use App\Repository\CarRepository;
+use App\Application\UseCase\Car\CreateCar\CreateCarUseCaseInterface;
+use App\Repository\CarRepository as RepositoryCarRepository;
+use App\DTO\CarDTO;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +17,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class CarController extends AbstractController
 {
     #[Route(name: 'app_car_index', methods: ['GET'])]
-    public function index(CarRepository $carRepository): Response
+    public function index(RepositoryCarRepository $carRepository): Response
     {
         return $this->render('car/index.html.twig', [
             'cars' => $carRepository->findAll(),
@@ -23,15 +25,14 @@ final class CarController extends AbstractController
     }
 
     #[Route('/new', name: 'app_car_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, CreateCarUseCaseInterface $carUseCase): Response
     {
-        $car = new Car();
+        $car = new CarDto();
         $form = $this->createForm(CarForm::class, $car);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($car);
-            $entityManager->flush();
+            $carUseCase->execute($car);
 
             return $this->redirectToRoute('app_car_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -71,7 +72,7 @@ final class CarController extends AbstractController
     #[Route('/{id}', name: 'app_car_delete', methods: ['POST'])]
     public function delete(Request $request, Car $car, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$car->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $car->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($car);
             $entityManager->flush();
         }
