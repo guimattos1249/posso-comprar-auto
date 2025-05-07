@@ -1,0 +1,23 @@
+<div class="form-container">
+    {% form_theme form 'form/custom_form_theme.html.twig' %}
+
+    {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+        <div class="form-group">
+            {{ form_row(form.brand) }}
+        </div>
+
+        <div class="form-group grid md-grid">
+            {{ form_row(form.model) }}
+            {{ form_row(form.version) }}
+        </div>
+
+        <div class="form-group grid md-grid">
+            {{ form_row(form.year) }}
+            {{ form_row(form.fipe_price) }}
+        </div>
+
+        <button>
+            {{ button_label|default('Save') }}
+        </button>
+    {{ form_end(form) }}
+</div>

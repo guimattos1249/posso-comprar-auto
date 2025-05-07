@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Car{% endblock %}
+
+{% block body %}
+    <div class="form-header">
+        <h1>Inclusão de novo Carro</h1>
+        <a href="{{ path('app_car_index') }}"
+        class="text-sky-400 hover:underline hover:text-sky-950 cursor-pointer">
+            ← Back to list
+        </a>
+    </div>
+
+    {{ include('car/_form.html.twig') }}
+{% endblock %}

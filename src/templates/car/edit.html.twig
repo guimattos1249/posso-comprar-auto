@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Car{% endblock %}
+
+{% block body %}
+    <div class="form-header">
+        <h1>Editar Carro {{car.model}}</h1>
+        <a href="{{ path('app_car_index') }}"
+        class="text-sky-400 hover:underline hover:text-sky-950 cursor-pointer">
+            ← Back to list
+        </a>
+    </div>
+
+    {{ include('car/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <div class="footer-action-buttons">
+        {{ include('car/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

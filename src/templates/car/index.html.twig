@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car Index{% endblock %}
+
+{% block body %}
+    <div class="index-header">
+        <h1>Carros</h1>
+        <div class="new-car-btn">
+            <a href="{{ path('app_car_new') }}" class="btn-create">Create New</a>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table class="car-table">
+            {# <caption class="sr-only">List of cars</caption> #}
+            <thead>
+                <tr>
+                    <th class="table-header">ID</th>
+                    <th class="table-header">Marca</th>
+                    <th class="table-header">Modelo</th>
+                    <th class="table-header">Versão</th>
+                    <th class="table-header">Ano</th>
+                    <th class="table-header">Preço na tabela FIPE</th>
+                    <th class="table-header">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                    <tr class="table-row">
+                        <td class="table-cell">{{ car.id }}</td>
+                        <td class="table-cell">{{ car.brand }}</td>
+                        <td class="table-cell">{{ car.model }}</td>
+                        <td class="table-cell">{{ car.version }}</td>
+                        <td class="table-cell">{{ car.year }}</td>
+                        <td class="table-cell">R$ {{ car.fipePrice|number_format(2, ',', '.') }}</td>
+                        <td class="actions-cell">
+                            <a href="{{ path('app_car_show', {'id': car.id}) }}" class="btn-show">Show</a>
+                            <a href="{{ path('app_car_edit', {'id': car.id}) }}" class="btn-edit">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="no-cars">No cars found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

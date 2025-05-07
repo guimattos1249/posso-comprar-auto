@@ -1,0 +1,331 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fafafa;
+  max-width: 90%; /* Limita a largura da tabela a 90% da largura da tela */
+  margin: 0 auto; /* Centraliza a tabela */
+}
+
+.form-row {
+  margin-bottom: 1rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #404040;
+  margin-bottom: 0.25rem;
+}
+
+.form-widget {
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  background-color: #efefef;
+  border: 1px solid #D1D5DB;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+}
+
+.form-widget:focus {
+  border-color: #6366F1;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+.form-errors {
+  font-size: 0.875rem;
+  color: #EF4444;
+  margin-top: 0.25rem;
+}
+
+.select-widget {
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  background-color: #efefef;
+  border: 1px solid #D1D5DB;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+}
+
+.select-widget:focus {
+  border-color: #6366F1;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+.money-widget {
+  position: relative; 
+  width: 100%; /* Garante que o contêiner ocupe a largura total disponível */
+}
+
+.money-widget .currency-symbol {
+  position: absolute;
+  left: 1rem; /* Ajusta a posição do símbolo */
+  top: 50%;
+  transform: translateY(-50%); /* Alinha verticalmente o símbolo */
+  font-size: 0.875rem; 
+  color: #6B7280;
+  pointer-events: none; /* Impede que o símbolo bloqueie a interação com o input */
+  margin-right: 2.5rem;
+}
+
+.money-widget input:focus {
+  border-color: #6366F1;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+/* form */
+.form-container {
+  max-width: 640px; /* max-w-2xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem; /* p-6 */
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.358); /* shadow-md */
+  border-radius: 1rem; /* rounded-xl */
+  border-width: 0; /* largura da borda */
+  border-style: solid; /* estilo da borda */
+  border-color: #000; /* cor da borda */
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-container .form-group.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.form-container .form-group.grid.md-grid {
+  grid-template-columns: 1fr 1fr; /* md:grid-cols-2 */
+}
+
+.form-container .form-group.grid .form-row {
+  margin-bottom: 1rem;
+}
+
+.form-container button {
+  background-color: #2563eb; /* bg-blue-600 */
+  color: white;
+  font-weight: 600; /* font-semibold */
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.375rem; /* rounded */
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #0b46eb; /* hover:bg-blue-700 */
+}
+
+.space-y-4 {
+  margin-top: 1rem;
+}
+
+.form-header {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem;
+}
+
+.form-header h1 {
+  font-size: 1.875rem /* 30px */;
+  line-height: 2.25rem /* 36px */;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1)) /* #2563eb */;
+  margin-bottom: 1rem;
+}
+
+.form-header h1:hover {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity, 1)) /* #1d4ed8 */;
+  transition: 0.3s;
+}
+
+.form-header a {
+  text-decoration: none;
+  --tw-text-opacity: 1;
+  color: rgb(56 189 248 / var(--tw-text-opacity, 1)) /* #38bdf8 */;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-header a:hover {
+  --tw-text-opacity: 1;
+  color: rgb(8 47 73 / var(--tw-text-opacity, 1)) /* #082f49 */;
+}
+
+/*Table and action buttons*/
+h1.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.358); /* shadow-md */
+  border-radius: 0.5rem;
+  border-width: 0; /* largura da borda */
+  border-style: solid; /* estilo da borda */
+  border-color: #000; /* cor da borda */
+  padding: 1rem;
+}
+
+.car-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.car-table th,
+.car-table td {
+  padding: 0.75rem;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.car-table th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  color: #374151;
+}
+
+.car-table td {
+  color: #1f2937;
+}
+
+.table-row {
+  transition: 0.3s;
+}
+
+.table-row:hover {
+  transform: scale(1.025);
+}
+
+.table-header {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.table-cell {
+  padding: 0.75rem;
+  text-align: left;
+  font-size: 0.875rem;
+  color: #1f2937;
+}
+
+.actions-cell {
+  text-align: center;
+}
+
+.btn-show,
+.btn-edit,
+.btn-create,
+.btn-delete {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-show {
+  background-color: #3b82f6;
+  color: white;
+  margin-right: 0.25rem;
+}
+
+.btn-show:hover {
+  background-color: #2563eb;
+}
+
+.btn-edit {
+  color: white;
+  background-color: #fbbf24;
+}
+
+.btn-edit:hover {
+  background-color: #f59e0b;
+}
+
+.btn-delete {
+  color: white;
+  background-color: #fb2424;
+}
+
+.btn-delete:hover {
+  background-color: #f50b0b;
+}
+
+.no-cars {
+  text-align: center;
+  padding: 1rem;
+  color: #6b7280;
+}
+
+.index-header {
+  display: flex;
+  flex: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.index-header h1 {
+  font-size: 1.875rem /* 30px */;
+  line-height: 2.25rem /* 36px */;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1)) /* #2563eb */;
+  margin-bottom: 1rem;
+}
+
+.index-header h1:hover {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity, 1)) /* #1d4ed8 */;
+  transition: 0.3s;
+}
+
+.new-car-btn {
+  margin-top: 1.5rem;
+}
+
+.btn-create {
+  background-color: #10b981;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-create:hover {
+  background-color: #059669;
+}
+
+.footer-action-buttons {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

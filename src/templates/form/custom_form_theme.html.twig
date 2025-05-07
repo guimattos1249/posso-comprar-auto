@@ -1,0 +1,66 @@
+{# templates/form/custom_form_theme.html.twig #}
+{% use 'form_div_layout.html.twig' %}
+
+{% block form_row %}
+    <div class="form-row">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}
+
+{% block form_label %}
+    {% if label is not same as(false) %}
+        <label for="{{ id }}" class="form-label">
+            {{ label|trans({}, translation_domain) }}
+        </label>
+    {% endif %}
+{% endblock %}
+
+{% block form_widget_simple %}
+    <input type="{{ type|default('text') }}" {{ block('widget_attributes') }} value="{{ value }}"
+        class="form-widget" />
+{% endblock %}
+
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        <ul class="form-errors">
+            {% for error in errors %}
+                <li>{{ error.message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block choice_widget %}
+    <select {{ block('widget_attributes') }}
+        class="select-widget">
+        {% if placeholder is not none %}
+            <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
+        {% endif %}
+        {% for group_label, choice in choices %}
+            {% if choice is iterable %}
+                <optgroup label="{{ group_label|trans({}, translation_domain) }}">
+                    {% for nested_choice in choice %}
+                        {% set options = { 'choice': nested_choice } %}
+                        {{ block('choice_widget_options') }}
+                    {% endfor %}
+                </optgroup>
+            {% else %}
+                {% set options = { 'choice': choice } %}
+                {{ block('choice_widget_options') }}
+            {% endif %}
+        {% endfor %}
+    </select>
+{% endblock %}
+
+{% block money_widget %}
+    <div class="money-widget">
+        <span class="currency-symbol">R$</span>
+        <input type="text"
+            {{ block('widget_attributes') }}
+            value="{{ value }}"
+            class="form-widget"
+        />
+    </div>
+{% endblock %}
